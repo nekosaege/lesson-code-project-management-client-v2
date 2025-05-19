@@ -14,7 +14,11 @@ function AddProject(props) {
     const requestBody = { title, description };
     
     axios
-      .post(`${API_URL}/api/projects`, requestBody)
+    .post(
+      `${API_URL}/api/projects`,
+      requestBody,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
       .then((response) => {
         // Reset the state
         setTitle("");
